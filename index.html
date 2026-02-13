@@ -74,29 +74,29 @@
     </div>
 
     <div id="gifContainer">
-        <img src="/loveyou.gif" alt="Valentine GIF">
+        <img src="https://uinona.net/wp-content/uploads/gif_335/animated_0000003316.gif" alt="Valentine GIF">
     </div>
 
     <script>
+
+
+        $(function() {
+          $("#noBtn").on({
+            mouseover: function() {
+              $(this).css({
+                left: (Math.random() * 200) + "px",
+                top: (Math.random() * 200) + "px",
+              });
+            }
+          });
+        });
+
+        
         const noBtn = document.getElementById("noBtn");
         const yesBtn = document.getElementById("yesBtn");
         const gifContainer = document.getElementById("gifContainer");
 
-        // Make the "No" button dodge the cursor
-        document.addEventListener("mousemove", function(e) {
-            const rect = noBtn.getBoundingClientRect();
-            const distance = Math.hypot(
-                e.clientX - (rect.left + rect.width / 2),
-                e.clientY - (rect.top + rect.height / 2)
-            );
 
-            if (distance < 100) {
-                const randomX = Math.random() * (window.innerWidth - 100);
-                const randomY = Math.random() * (window.innerHeight - 50);
-                noBtn.style.left = randomX + "px";
-                noBtn.style.top = randomY + "px";
-            }
-        });
 
         // When Yes is clicked
         yesBtn.addEventListener("click", function() {
