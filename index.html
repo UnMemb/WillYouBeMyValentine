@@ -1,15 +1,110 @@
-<html lang="en"><head>
-        <meta charset="UTF-8">
-        <link rel="icon" type="image/svg+xml" href="/will-you-be-my-valentine/favicon.svg">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Will you be my valentine?</title>
-      <script type="module" crossorigin="" src="/will-you-be-my-valentine/assets/index-DZSBSzfG.js"></script>
-      <link rel="stylesheet" crossorigin="" href="/will-you-be-my-valentine/assets/index-Clsg0WI4.css">
-    </head>
-    <body>
-        <div id="root"><div class="-mt-16 flex h-screen flex-col items-center justify-center"><img class="h-[200px]" src="https://gifdb.com/images/high/cute-love-bear-roses-ou7zho5oosxnpo6k.gif">
-                <h1 class="my-4 text-4xl">Will you be my Valentine?</h1><div class="flex items-center">
-                <button class="mr-4 rounded bg-green-500 px-4 py-2 font-bold text-white hover:bg-green-700" style="font-size: 16px;">Yes</button>
-                <button class=" rounded bg-red-500 px-4 py-2 font-bold text-white hover:bg-red-700">No</button></div></div></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Be My Valentine 🐝</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #ffb6c1, #ffe4e1);
+            overflow: hidden;
+        }
 
-</body></html>
+        h1 {
+            font-size: 3rem;
+            color: #d63384;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .buttons {
+            position: relative;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            margin: 10px;
+            transition: 0.2s ease;
+        }
+
+        #yesBtn {
+            background-color: #ff4d6d;
+            color: white;
+        }
+
+        #yesBtn:hover {
+            transform: scale(1.1);
+        }
+
+        #noBtn {
+            background-color: #6c757d;
+            color: white;
+            position: absolute;
+        }
+
+        #gifContainer {
+            margin-top: 30px;
+            display: none;
+        }
+
+        img {
+            width: 250px;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Will you bee my Valentine? 🐝💖</h1>
+
+    <div class="buttons">
+        <img class="h-[200px]" src="https://gifdb.com/images/high/cute-love-bear-roses-ou7zho5oosxnpo6k.gif">
+        <button id="yesBtn">Yes 💕</button>
+        <button id="noBtn" disabled>No 😢</button>
+    </div>
+
+    <div id="gifContainer">
+        <img src="/loveyou.gif" alt="Valentine GIF">
+    </div>
+
+    <script>
+        const noBtn = document.getElementById("noBtn");
+        const yesBtn = document.getElementById("yesBtn");
+        const gifContainer = document.getElementById("gifContainer");
+
+        // Make the "No" button dodge the cursor
+        document.addEventListener("mousemove", function(e) {
+            const rect = noBtn.getBoundingClientRect();
+            const distance = Math.hypot(
+                e.clientX - (rect.left + rect.width / 2),
+                e.clientY - (rect.top + rect.height / 2)
+            );
+
+            if (distance < 100) {
+                const randomX = Math.random() * (window.innerWidth - 100);
+                const randomY = Math.random() * (window.innerHeight - 50);
+                noBtn.style.left = randomX + "px";
+                noBtn.style.top = randomY + "px";
+            }
+        });
+
+        // When Yes is clicked
+        yesBtn.addEventListener("click", function() {
+            gifContainer.style.display = "block";
+            yesBtn.style.display = "none";
+            noBtn.style.display = "none";
+        });
+    </script>
+
+</body>
+</html>
